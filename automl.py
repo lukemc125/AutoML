@@ -7,8 +7,8 @@ import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
 
-if os.path.exists('./dataset.csv'): 
-    df = pd.read_csv('dataset.csv', index_col=None)
+# if os.path.exists('./dataset.csv'): 
+#     df = pd.read_csv('dataset.csv', index_col=None)
 
 with st.sidebar: 
     st.image("https://www.onepointltd.com/wp-content/uploads/2020/03/inno2.png")
@@ -30,7 +30,7 @@ if choice == "Profiling":
     st_profile_report(profile_df)
 
 if choice == "Modelling": 
-    chosen_target = st.selectbox('Choose the Target Column', df.columns)
+    chosen_target = st.selectbox('Choose Target Column', df.columns)
     if st.button('Run Modelling'): 
         setup(df, target=chosen_target, silent=True)
         setup_df = pull()
