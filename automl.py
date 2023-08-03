@@ -9,8 +9,8 @@ from sklearn.preprocessing import LabelEncoder
 
 import os 
 
-if os.path.exists('./data2.csv.xls'): 
-    df = pd.read_csv('data2.csv.xls', index_col=None)
+if os.path.exists('./dataset.csv'): 
+    df = pd.read_csv('dataset.csv', index_col=None)
 
 with st.sidebar: 
     st.image("https://www.onepointltd.com/wp-content/uploads/2020/03/inno2.png")
@@ -34,8 +34,8 @@ if choice == "Profiling":
 
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose Target Column', df.columns)
-    le = LabelEncoder()
-    df[chosen_target] = le.fit_transform(df[chosen_target])
+    # le = LabelEncoder()
+    # df[chosen_target] = le.fit_transform(df[chosen_target])
     if st.button('Run Modelling'): 
         setup(df, target=chosen_target)
         setup_df = pull()
