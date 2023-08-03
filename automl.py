@@ -35,7 +35,20 @@ if choice == "Profiling":
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose Target Column', df.columns)
     df = df.dropna(subset=[chosen_target])
-    df[chosen_target] = pd.to_numeric(df[chosen_target], errors='coerce')
+    # df[chosen_target] = pd.to_numeric(df[chosen_target], errors='coerce')
+
+    # Iterate through columns and handle data types
+    for col in df.columns:
+        # If boolean (two unique values), convert to integer
+        if len(df[col].unique()) == 2:
+            df[col] = df[col].astype(int)
+        # If object, convert to category
+        elif df[col].dtype == 'object':
+            df[col] = df[col].astype('category')
+        # If numeric with NaN, ensure float type
+        elif pd.api.types.is_numeric_dtype(df[col]) and df[col].isnull().any():
+            df[col] = df[col].astype(float)
+
     if st.button('Run Modelling'): 
         setup(df, target=chosen_target)
         setup_df = pull()
