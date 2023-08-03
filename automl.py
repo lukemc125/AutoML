@@ -8,8 +8,8 @@ import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
 
-if os.path.exists('./data2.xls'): 
-    df = pd.read_csv('data2.xls', index_col=None)
+if os.path.exists('./data2.csv.xls'): 
+    df = pd.read_csv('data2.csv.xls', index_col=None)
 
 with st.sidebar: 
     st.image("https://www.onepointltd.com/wp-content/uploads/2020/03/inno2.png")
