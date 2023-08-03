@@ -46,12 +46,15 @@ if choice == "Modelling":
             print(f"An error occurred during setup: {e}")
             # You can add additional code here to handle the error, if needed
 
-        st.write("made it out")
+        st.write("setup done")
         setup_df = pull()
         st.dataframe(setup_df)
         best_model = compare_models()
+        st.write("comparisons done")
         compare_df = pull()
+        st.write("comparisons pulled")
         st.dataframe(compare_df)
+        st.write("dataframed")
         save_model(best_model, 'best_model')
 
 if choice == "Download": 
