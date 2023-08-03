@@ -32,6 +32,7 @@ if choice == "Profiling":
 
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose Target Column', df.columns)
+    df[chosen_target] = df[chosen_target].astype(float)
     if st.button('Run Modelling'): 
         setup(df, target=chosen_target)
         setup_df = pull()
