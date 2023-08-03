@@ -45,6 +45,8 @@ if choice == "Modelling":
         except Exception as e:
             print(f"An error occurred during setup: {e}")
             # You can add additional code here to handle the error, if needed
+
+        st.write("made it out")
         setup_df = pull()
         st.dataframe(setup_df)
         best_model = compare_models()
