@@ -27,11 +27,9 @@ if choice == "Upload":
 
 if choice == "Profiling": 
     st.title("Exploratory Data Analysis")
-    if df is not None:
-        profile = ProfileReport(df, explorative=True)
-        st_profile_report(profile)
-    else:
-        st.warning("No data available. Please upload a dataset.")
+    profile_df = df.profile_report()
+    st_profile_report(profile_df)
+
 
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose Target Column', df.columns)
