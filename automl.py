@@ -44,7 +44,7 @@ if choice == "Modelling":
             df[col] = df[col].astype(int)
         # If object, convert to category
         elif df[col].dtype == 'object':
-            df[col] = df[col].astype('category')
+            df[col] = pd.to_numeric(df[col], errors='coerce')
         # If numeric with NaN, ensure float type
         elif pd.api.types.is_numeric_dtype(df[col]) and df[col].isnull().any():
             df[col] = df[col].astype(float)
