@@ -1,17 +1,11 @@
-import subprocess
-import sys
-subprocess.check_call([sys.executable, "-m", "pip", "show", "ydata-profiling"])
-
 from operator import index
 import streamlit as st
 import plotly.express as px
 from pycaret.regression import setup, compare_models, pull, save_model, load_model
-import ydata_profiling as yp
+import pandas_profiling as yp
 import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
-
-
 
 if os.path.exists('./data2.csv.xls'): 
     df = pd.read_csv('data2.csv.xls', index_col=None)
