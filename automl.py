@@ -49,15 +49,14 @@ if choice == "Modelling":
         st.write("setup done")
         setup_df = pull()
         st.write("test?")
-        st.write(setup_df.head(6))
         st.dataframe(setup_df)
-        best_model = compare_models()
-        st.write("comparisons done")
-        compare_df = pull()
-        st.write("comparisons pulled")
-        st.dataframe(compare_df)
-        st.write("dataframed")
-        save_model(best_model, 'best_model')
+        # best_model = compare_models()
+        # st.write("comparisons done")
+        # compare_df = pull()
+        # st.write("comparisons pulled")
+        # st.dataframe(compare_df)
+        # st.write("dataframed")
+        # save_model(best_model, 'best_model')
 
 if choice == "Download": 
     with open('best_model.pkl', 'rb') as f: 
