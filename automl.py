@@ -48,6 +48,7 @@ if choice == "Modelling":
 
         st.write("setup done")
         setup_df = pull()
+        st.write("test?")
         st.write(setup_df.head(6))
         st.dataframe(setup_df)
         best_model = compare_models()
