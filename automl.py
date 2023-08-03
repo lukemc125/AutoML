@@ -36,8 +36,6 @@ if choice == "Modelling":
     chosen_target = st.selectbox('Choose Target Column', df.columns)
     df = df.dropna(subset=[chosen_target])
     df[chosen_target] = pd.to_numeric(df[chosen_target], errors='coerce')
-    le = LabelEncoder()
-    df[chosen_target] = le.fit_transform(df[chosen_target])
     if st.button('Run Modelling'): 
         setup(df, target=chosen_target)
         setup_df = pull()
