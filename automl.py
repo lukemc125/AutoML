@@ -1,6 +1,6 @@
 import subprocess
 import sys
-subprocess.check_call([sys.executable, "-m", "pip", "install", "ydata-profiling"])
+subprocess.check_call([sys.executable, "-m", "pip", "show", "ydata-profiling"])
 
 from operator import index
 import streamlit as st
