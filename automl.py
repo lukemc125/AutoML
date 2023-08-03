@@ -40,7 +40,11 @@ if choice == "Modelling":
             df[col] = df[col].astype('category').cat.codes
         
     if st.button('Run Modelling'): 
-        setup(df, target=chosen_target, numeric_imputation='median', feature_selection=True)
+        try:
+            setup_env = setup(df, target=chosen_target, numeric_imputation='median', feature_selection=True)
+        except Exception as e:
+            print(f"An error occurred during setup: {e}")
+            # You can add additional code here to handle the error, if needed
         setup_df = pull()
         st.dataframe(setup_df)
         best_model = compare_models()
