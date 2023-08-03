@@ -35,8 +35,10 @@ if choice == "Profiling":
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose Target Column', df.columns)
 
-    categorical_features = df.select_dtypes(include=['object']).columns.tolist()
-
+    for col in df.columns:
+        if df[col].nunique() == 2:
+            df[col] = df[col].astype('category').cat.codes
+        
     if st.button('Run Modelling'): 
         setup(df, target=chosen_target, numeric_imputation='median', feature_selection=True)
         setup_df = pull()
