@@ -5,6 +5,8 @@ from pycaret.regression import setup, compare_models, pull, save_model, load_mod
 import ydata_profiling as yp
 import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
+from sklearn.preprocessing import LabelEncoder
+
 import os 
 
 if os.path.exists('./data2.csv.xls'): 
@@ -32,7 +34,8 @@ if choice == "Profiling":
 
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose Target Column', df.columns)
-    df[chosen_target] = df[chosen_target].astype(float)
+    le = LabelEncoder()
+    df[chosen_target] = le.fit_transform(df[chosen_target])
     if st.button('Run Modelling'): 
         setup(df, target=chosen_target)
         setup_df = pull()
