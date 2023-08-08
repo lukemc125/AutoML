@@ -6,10 +6,13 @@ import ydata_profiling as yp
 import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 from sklearn.preprocessing import LabelEncoder
+import pandasai
+import os
 
+secret_key = os.environ.get('MY_SECRET_KEY')
 from pandasai import PandasAI
 from pandasai.llm.openai import OpenAI
-llm = OpenAI(api_token="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")
+llm = OpenAI(api_token=secret_key)
 
 pandas_ai = PandasAI(llm)
 
